@@ -18,11 +18,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/secret")
+     * @Route("/secret", name="set_secret")
      * @Template()
      */
     public function secretAction()
     {
-        return array();
+        $user = $this->getUser();
+
+        return array(
+            'user' => $user
+        );
     }
 }
