@@ -1,0 +1,23 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+web/bundles/
+web/uploads/
+web/css/
+web/js/
+app/bootstrap.php.cache
+app/cache/*
+app/logs/*
+build/
+/vendor
+/composer.lock
+bin
+composer.phar
+
+# Configuration files
+app/config/parameters.*
+
+# Mac
+.DS_Store
+*~
