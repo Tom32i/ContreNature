@@ -5,6 +5,9 @@ namespace Tom32i\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -13,7 +16,9 @@ class DefaultController extends Controller
      */
     public function startAction($token)
     {
-        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('Tom32iUserBundle:User')->findOneBySalt($token);
 
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
@@ -31,7 +36,7 @@ class DefaultController extends Controller
      * @param \FOS\UserBundle\Model\UserInterface        $user
      * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    protected function authenticateUser(UserInterface $user, Response $response)
+    protected function authenticateUser(\Tom32i\UserBundle\Entity\User $user, Response $response)
     {
         try {
             $this->container->get('fos_user.security.login_manager')->loginUser(
