@@ -1,0 +1,14 @@
+tom32i_user:
+    resource: "@Tom32iUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tom32i_site:
+    resource: "@Tom32iSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
