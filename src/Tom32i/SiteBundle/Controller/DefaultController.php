@@ -16,4 +16,13 @@ class DefaultController extends Controller
     {
         return array('name' => $name);
     }
+
+    /**
+     * @Route("/secret")
+     * @Template()
+     */
+    public function secretAction()
+    {
+        return array();
+    }
 }
