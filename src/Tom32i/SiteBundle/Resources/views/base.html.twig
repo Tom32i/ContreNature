@@ -74,6 +74,7 @@
         {% endjavascripts %}
         {% endblock body_js %}
 
+        {% if analytics_account is defined %}
         {% block body_js_analytics %}
         <script type="text/javascript">
 
@@ -91,5 +92,6 @@
 
         </script>
         {% endblock body_js_analytics %}
+        {% endif %}
     </body>
 </html>
