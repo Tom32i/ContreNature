@@ -1,0 +1,28 @@
+{% extends "Tom32iSiteBundle::base.html.twig" %}
+
+{% block head_title %}
+    C'est contre nature
+{% endblock %}
+
+{% block head_meta_description %}
+    C'est contre nature
+{% endblock %}
+
+{% block head_meta_keywords %}
+    contre nature
+{% endblock %}
+
+{% block body_container%}
+
+    <header id="page-header">
+        <h1>Contre Nature</h1>
+    </header>
+
+    <div role="main">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <footer id="page-footer">
+    </footer>
+{% endblock body_container %}
