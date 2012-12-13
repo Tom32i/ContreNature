@@ -20,7 +20,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Tom32i\SiteBundle\Entity\Secret", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Tom32i\SiteBundle\Entity\Secret", mappedBy="user", cascade={"persist","remove"}, orphanRemoval=true)
      */
     private $secret;
 
@@ -30,7 +30,10 @@ class User extends BaseUser
     {
         parent::__construct();
         
-        $this->secret = new Secret();
+        $secret = new Secret();
+        $secret->setUser($this);
+
+        $this->secret = $secret;
     }
 
     // METHODS
