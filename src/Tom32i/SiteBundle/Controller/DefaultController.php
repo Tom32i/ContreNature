@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Tom32i\SiteBundle\Form\SecretType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use DateTime;
 
 class DefaultController extends Controller
 {
@@ -17,7 +18,13 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $secrets = $em->getRepository('Tom32iSiteBundle:Secret')->findAll();
+
+        return array(
+            'secrets' => $secrets
+        );
     }
 
     /**
@@ -26,13 +33,15 @@ class DefaultController extends Controller
      */
     public function secretAction(Request $request)
     {
+        $closed = new DateTime() > new DateTime('2012-12-31');
+
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
         $secret = $user->getSecret();
         $form = $this->createForm(new SecretType(), $secret);
 
-        if ($request->isMethod('POST')) 
+        if ( !$closed && $request->isMethod('POST')) 
         {
             $form->bind($request);
 
@@ -50,6 +59,7 @@ class DefaultController extends Controller
             'user' => $user,
             'secret' => $secret,
             'form' => $form->createView(),
+            'closed' => $closed,
         );
     }
 }
