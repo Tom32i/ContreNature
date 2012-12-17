@@ -2,6 +2,12 @@
 
 {% block content %}
 
-Ca c'est l'index ou on affiche tout les secrets.
+<ul id="secrets" class="unstyled">
+	{% for secret in secrets %}
+		<li>
+			<p class="secret">{{ secret.content }}</p>
+		</li>
+	{% endfor %}
+</ul>
 
 {% endblock %}
