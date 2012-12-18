@@ -1,0 +1,12 @@
+{% extends "Tom32iSiteBundle::layout.html.twig" %}
+
+{% block content %}
+	
+	{% for key, user in users %}
+	<div>
+		<p>{{ user }}</p>
+		<pre>{{ messages[key] }}</pre>
+	</div>
+	{% endfor %}
+
+{% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/start/{token}")
+     * @Route("/start/{token}", name="start")
      */
     public function startAction($token)
     {

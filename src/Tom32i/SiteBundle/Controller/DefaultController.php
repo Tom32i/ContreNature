@@ -13,7 +13,7 @@ use DateTime;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template()
      */
     public function indexAction()
@@ -79,6 +79,42 @@ class DefaultController extends Controller
             'secret' => $secret,
             'form' => $form->createView(),
             'closed' => $closed,
+        );
+    }
+
+    /**
+     * @Route("/sudo/inviations", name="invitations")
+     * @Template()
+     */
+    public function invitationsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $mailer = $this->get('mailer');
+
+        $users = $em->getRepository('Tom32iUserBundle:User')->findAll();
+        $messages = array();
+
+        foreach ($users as $key => $user) 
+        {
+            $message = \Swift_Message::newInstance()
+                ->setSubject("C'est contre nature !")
+                ->setFrom('thomas.jarrand@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'Tom32iSiteBundle:Mail:invitation.html.twig',
+                        array('user' => $user)
+                    )
+                    , 'text/html'
+                )
+            ; 
+
+            $messages[$key] = $mailer->send($message);
+        }
+
+        return array(
+            'users' => $users,
+            'messages' => $messages,
         );
     }
 }

@@ -1,0 +1,55 @@
+{% extends "Tom32iSiteBundle:Mail:layout.html.twig" %}
+
+{% block title %}C'est contre nature !{% endblock %}
+
+{% block content %}
+
+	<table cellpadding="0" cellspacing="0" border="0" align="center" style="background-color: #33b5ff;">
+		<tr>
+			<td width="600" valign="top">
+				<img class="image_fix" src="{{ url('home') }}{{ asset('/bundles/tom32isite/images/logo_mail.png') }}" alt="Mon secret contre nature" title="Mon secret contre nature" width="600" height="400" />
+			</td>
+		</tr>
+	</table>
+
+	<table cellpadding="0" cellspacing="0" border="0" align="center">
+		<tr>
+			<td width="600" valign="top">
+				<h1>T'es un peu contre-nature toi non ?</h1>
+			</td>
+		</tr>
+		<tr>
+			<td width="600" valign="top">
+				<p>Si tu reçois ce mail, c'est que tu fais partis des petit veinards qui vons passer le jour de l'an dans la maison Jarrand.</p>
+				<p>Cette année le thème est simple: "C'est contre-naturaaaan !".</p>
+				<p>Si tu as vécu les 6 derniers mois dans une grotte et que tu ne sais pas de quoi je parle, tu devrais commencer par regarder cette vidéo:</p>
+
+				<a href="http://www.youtube.com/watch?v=yi-p1Cfqp48" target="_blank" title="Vidéo contre nature" style="color: orange; text-decoration: none;">
+					Voir la vidéo contre naturaaaan ...
+				</a>
+
+				<p>Revenons au thème, ce qu'on vous propose est simple : chacun d'entre nous est un peu contre naturaaan.</p>
+				<p>Donc vous allez penser à un secret, un aspect de votre personalité, une anecdote, ou n'importe quoi d'autre qui vous concerne et qui est un petit peu ... contre naturaaaaan.</p>
+
+				<p>Dès que vous l'avez, vous cliquez sur le liens ci dessous pour envoyer votre secret sur le site.</p>
+				<p>Le site enregistrera le secret de tout les parcitipants et même le créateur (moi même) ne connaitra pas les secrets des autres.</p>
+
+				<p>Lors de la soirée du 31 tout les secrets seront affichés ... sans révélez à qui ils appartiennent ;)</p>
+				<p>Vous devrez deviner à qui appartient chaque secret jusqu'à minuit ... après quoi aura lieu la grande cérémonie des révélations</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="600" valign="top">
+				<a href="{{ url('start', { token: user.salt }) }}" target ="_blank" title="Envoyer ton secret" style="color: orange; text-decoration: none; font-size: 20px;">
+					Clique ici pour envoyer ton secret !
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td width="600" valign="top">
+				<p>Si tu as le moindre problème, bin ... réponds à ce mail et poses ta question :)</p>
+			</td>
+		</tr>
+	</table>
+
+{% endblock %}
