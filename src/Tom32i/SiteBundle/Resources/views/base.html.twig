@@ -14,7 +14,8 @@
         <meta name="viewport" content="width=device-width">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         {% endblock head_meta %}
-
+        
+        <link href='http://fonts.googleapis.com/css?family=Pacifico|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
         {% block stylesheets %}
         {% stylesheets 
@@ -35,7 +36,6 @@
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
         {% endblock head_js %}
-
         
         {#% block safari_mobile_meta %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />

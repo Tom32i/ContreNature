@@ -15,15 +15,23 @@
 {% block body_container%}
 
     <header id="page-header">
-        <h1>Mon secret contre-nature</h1>
+        <div class="logo">
+            <h1>Mon secret contre-nature</h1>
+        </div>
     </header>
 
-    <div role="main">
+    <div id="content" role="main" class="content">
         {% block content %}
 
         {% endblock content %}
     </div>
 
     <footer id="page-footer">
+        {% block footer %}
+            <div class="content">
+                <p>Design par <small>Cédric Aldeghéri</small> et <strong>Ilinca Jambon</strong>.</p>
+                <p>Développé par Thomas Jarrand.</p>
+            </div>
+        {% endblock footer %}
     </footer>
 {% endblock body_container %}
