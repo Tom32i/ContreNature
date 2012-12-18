@@ -18,12 +18,31 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $open = new DateTime() <= new DateTime('2012-12-31');
+
         $em = $this->getDoctrine()->getManager();
 
         $secrets = $em->getRepository('Tom32iSiteBundle:Secret')->findAll();
 
+        if($open)
+        {
+            $done = 0;
+
+            foreach ($secrets as $secret) 
+            {
+                $done += $secret->isComplete() ? 1 : 0;
+            }
+
+            return array(
+                'done' => $done,
+                'total' => count($secrets),
+                'open' => $open,
+            );
+        }
+
         return array(
-            'secrets' => $secrets
+            'secrets' => $secrets,
+            'open' => $open,
         );
     }
 

@@ -34,6 +34,15 @@ class Secret
      */
     private $user;
 
+    // METHODS
+
+    public function isComplete()
+    {
+        return strlen($this->content) > 10;
+    }
+
+    // GETTERS & SETTERS
+
     /**
      * Get id
      *
