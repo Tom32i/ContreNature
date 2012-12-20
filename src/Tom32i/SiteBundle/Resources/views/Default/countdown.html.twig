@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+
+        {% block head_meta %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>2012 + 1</title>
+        <meta name="description" content="{% block head_meta_description %}{% endblock %}">
+        <meta name="keywords" content="{% block head_meta_keywords %}{% endblock %}">
+        <meta name="viewport" content="width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        {% endblock head_meta %}
+
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+        {% block stylesheets %}
+        {% stylesheets 
+            '@Tom32iSiteBundle/Resources/public/css/countdown.css'
+            output='css/countdown.css' 
+            filter='?yui_css' 
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% endblock stylesheets %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}">
+
+        {% block body_container%}
+            <div class="background grey"></div>
+            <div class="background pink"></div>
+            <div class="container">
+
+                <div class="year">
+                    {% for key, i in [2,0,1,2] %}
+                    <ul id="year_{{ key }}" class="flip number">
+                        <li class="from">
+                            <a href="#">
+                                <div class="up">
+                                    <div class="shadow"></div>
+                                    <div class="inn">{{ i }}</div>
+                                </div>
+                                <div class="down">
+                                    <div class="shadow"></div>
+                                    <div class="inn">{{ i }}</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="to">
+                            <a href="#">
+                                <div class="up">
+                                    <div class="shadow"></div>
+                                    <div class="inn">{{ i }}</div>
+                                </div>
+                                <div class="down">
+                                    <div class="shadow"></div>
+                                    <div class="inn">{{ i }}</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+
+                <div class="countdown">
+                    {% for key in 0..1 %}
+                        <ul id="minutes_{{ key }}" class="flip number">
+                            <li class="from">
+                                <a href="#">
+                                    <div class="up">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                    <div class="down">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="to">
+                                <a href="#">
+                                    <div class="up">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                    <div class="down">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                    <p class="separator">:</p>
+                    {% for key in 0..1 %}
+                        <ul id="seconds_{{ key }}" class="flip number">
+                            <li class="from">
+                                <a href="#">
+                                    <div class="up">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                    <div class="down">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="to">
+                                <a href="#">
+                                    <div class="up">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                    <div class="down">
+                                        <div class="shadow"></div>
+                                        <div class="inn">0</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="happynewyear">
+                <h1>Bonne année !</h1>
+            </div>
+
+            <!--div id="social"><p><a target="_blank" href="http://ademilter.com/lab/countdown_clock/">http://ademilter.com/lab/countdown_clock/</a></p></div-->
+
+        {% endblock body_container %}
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        {% javascripts '@Tom32iSiteBundle/Resources/public/js/vendor/jquery-1.8.2.min.js' 
+            output='js/jquery.js' 
+            filter='?yui_js'
+        %}
+        <script>window.jQuery || document.write('<script src="{{ asset_url }}"><\/script>')</script>
+        {% endjavascripts %}
+        
+
+        {% block body_js %}
+        {% javascripts 
+            '@Tom32iSiteBundle/Resources/public/js/vendor/prefixfree.min.js'
+            '@Tom32iSiteBundle/Resources/public/js/plugins.js'
+            '@Tom32iSiteBundle/Resources/public/js/countdown.js' 
+            output='js/countdown.js' 
+            filter='?yui_js'
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% endblock body_js %}
+
+        {% if analytics_account is defined %}
+        {% block body_js_analytics %}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '{{ analytics_account }}']);
+          _gaq.push(['_setDomainName', '{{ analytics_domain }}']);
+          _gaq.push(['_setAllowLinker', true]);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        {% endblock body_js_analytics %}
+        {% endif %}
+    </body>
+</html>

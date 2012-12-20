@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $open = new DateTime() <= new DateTime('2012-12-31');
+        $open = new DateTime() <= new DateTime('2012-12-18');
 
         $em = $this->getDoctrine()->getManager();
 
@@ -116,5 +116,14 @@ class DefaultController extends Controller
             'users' => $users,
             'messages' => $messages,
         );
+    }
+
+    /**
+     * @Route("/countdown", name="countdown")
+     * @Template()
+     */
+    public function countdownAction()
+    {
+        return array();
     }
 }

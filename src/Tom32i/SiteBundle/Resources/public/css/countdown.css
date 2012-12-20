@@ -1,0 +1,408 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #ccc;
+}
+
+a:hover {
+    color: #fff;
+}
+
+ul {
+    list-style: none
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* Main */
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
+    -webkit-user-select: none;
+    color: #888;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+}
+
+.background
+{    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.background.grey
+{
+    background: rgb(150, 150, 150);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(150, 150, 150, 1)), color-stop(100%, rgba(89, 89, 89, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#969696', endColorstr = '#595959', GradientType = 1);
+}
+
+.background.pink
+{
+    display: none;
+    opacity: 0;
+
+    transition: opacity 2s;
+    -moz-transition: opacity 2s; /* Firefox 4 */
+    -webkit-transition: opacity 2s; /* Safari and Chrome */
+    -o-transition: opacity 2s; /* Opera */
+
+    background: rgb(250, 156, 190);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(250, 156, 190, 1) 0%, rgba(238, 88, 144, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(250, 156, 190, 1)), color-stop(100%, rgba(238, 88, 144, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(250, 156, 190, 1) 0%, rgba(238, 88, 144, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(250, 156, 190, 1) 0%, rgba(238, 88, 144, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(250, 156, 190, 1) 0%, rgba(238, 88, 144, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(250, 156, 190, 1) 0%, rgba(238, 88, 144, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#fa9cbe', endColorstr = '#ee5890', GradientType = 1);
+}
+
+.new .background.pink
+{
+    opacity: 1;
+}
+
+.container {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 520px;
+    height: 360px;
+    margin: -180px 0 0 -260px;
+}
+
+/* Skeleton */
+
+ul.flip {
+    position: relative;
+    float: left;
+    margin: 5px;
+    width: 60px;
+    height: 90px;
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 87px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+}
+
+.year ul.flip {
+    position: relative;
+    float: left;
+    margin: 5px;
+    width: 120px;
+    height: 180px;
+    font-size: 160px;
+    font-weight: bold;
+    line-height: 168px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .7);
+}
+
+ul.flip li {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+ul.flip li:first-child {
+    z-index: 2;
+}
+
+ul.flip li a {
+    display: block;
+    height: 100%;
+    perspective: 200px;
+}
+
+.year ul.flip li a {
+    perspective: 400px;
+}
+
+ul.flip li a div {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+ul.flip li a div .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+ul.flip li a div.up {
+    transform-origin: 50% 100%;
+    top: 0;
+}
+
+ul.flip li a div.up:after {
+  content: "";
+  position:absolute;
+  top:44px;
+  left:0;
+  z-index: 5;
+    width: 100%;
+  height: 3px;
+  background-color: rgba(0,0,0,.4);
+}
+
+.year ul.flip li a div.up:after {
+  top:88px;
+  height: 1px;
+}
+
+ul.flip li a div.down {
+    transform-origin: 50% 0%;
+    bottom: 0;
+}
+
+ul.flip li a div div.inn {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 200%;
+    color: #ccc;
+    text-shadow: 0 1px 2px #000;
+    text-align: center;
+    background-color: #333;
+    border-radius: 6px;
+}
+
+.year ul.flip li a div div.inn {
+    text-shadow: 0 2px 4px #000;
+    border-radius: 12px;
+}
+
+ul.flip li a div.up div.inn {
+    top: 0;
+
+}
+
+ul.flip li a div.down div.inn {
+    bottom: 0;
+}
+
+/* PLAY */
+
+ul.play li.before {
+    z-index: 3;
+}
+
+ul.play li.active {
+    animation: asd .5s .5s linear both;
+    z-index: 2;
+}
+
+@keyframes asd {
+    0% {
+        z-index: 2;
+    }
+    5% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 4;
+    }
+}
+
+ul.play li.active .down {
+    z-index: 2;
+    animation: turn .5s .5s linear both;
+}
+
+@keyframes turn {
+    0% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+ul.play li.before .up {
+    z-index: 2;
+    animation: turn2 .5s linear both;
+}
+
+@keyframes turn2 {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-90deg);
+    }
+}
+
+/* SHADOW */
+
+ul.play li.before .up .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
+    background: linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    animation: show .5s linear both;
+}
+
+ul.play li.active .up .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
+    background: linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
+    animation: hide .5s .3s linear both;
+}
+
+/*DOWN*/
+
+ul.play li.before .down .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
+    background: linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    animation: show .5s linear both;
+}
+
+ul.play li.active .down .shadow {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
+    background: linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
+    animation: hide .5s .3s linear both;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* YEAR */
+
+.year
+{
+    height: 180px;
+    display: block;
+    margin-bottom: 80px;
+}
+
+/* Countdown */
+
+.countdown
+{
+    width: 300px;
+    display: block;
+    height: 100px;
+    margin: 0 auto;
+    opacity: 1;
+
+    transition: opacity 1s;
+    -moz-transition: opacity 1s; /* Firefox 4 */
+    -webkit-transition: opacity 1s; /* Safari and Chrome */
+    -o-transition: opacity 1s; /* Opera */
+}
+
+.new .countdown{
+    opacity: 0;
+}
+
+.separator
+{
+    font-size: 60px;
+    line-height: 90px;
+    color: white;
+    position: relative;
+    width: 20px;
+    height: 90px;
+    display: block;
+    float: left;
+}
+
+#happynewyear
+{
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    color: white;
+
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 110%;
+    width: 100%;
+    height: 120px;
+    margin: -180px 0 0;
+    padding-top: 240px;
+
+    transition: top 1s;
+    -moz-transition: top 1s; /* Firefox 4 */
+    -webkit-transition: top 1s; /* Safari and Chrome */
+    -o-transition: top 1s; /* Opera */
+}
+
+.new #happynewyear
+{
+    top: 50%;
+}

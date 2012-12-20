@@ -11,21 +11,18 @@
 			<div class="bar" style="width: {{ progression }}%"></div>
 		</div>
 
-		<ul class="usntyled">
-			{#% for user in users %}
-			{% endfor %#}
-		</ul>
-
 		<p>Vous avez jusqu'au 30 décembre inclus pour envoyer vos secret.</p>
 
 	{% else %}
-		<ul id="secrets" class="unstyled">
+		<h2>La grande liste des secrets:</h2>
+
+		<div id="secrets" class="unstyled">
 			{% for secret in secrets %}
-				<li>
-					<p class="secret">{{ secret.content }}</p>
-				</li>
+				<div class="secret">
+					<p>{{ secret.content }}</p>
+				</div>
 			{% endfor %}
-		</ul>
+		</div>
 	{% endif %}
 
 {% endblock %}
