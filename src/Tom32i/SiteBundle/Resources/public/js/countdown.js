@@ -99,7 +99,8 @@ $(function()
     m1 = $("#minutes_1");
     y3 = $("#year_3");
 
-    $(".background").show();
+    $(".background.pink").show();
+    $("#happynewyear").show();
 
     interval = setInterval(function () { refresh(); }, 10);
 });

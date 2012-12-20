@@ -383,6 +383,7 @@ ul.play li.active .down .shadow {
 
 #happynewyear
 {
+    display: none;
     font-family: "Pacifico", cursive;
     font-size: 40px;
     color: white;

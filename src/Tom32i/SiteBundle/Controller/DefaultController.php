@@ -86,7 +86,7 @@ class DefaultController extends Controller
      * @Route("/sudo/inviations", name="invitations")
      * @Template()
      */
-    public function invitationsAction(Request $request)
+    public function invitationsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $mailer = $this->get('mailer');
@@ -96,26 +96,55 @@ class DefaultController extends Controller
 
         foreach ($users as $key => $user) 
         {
-            $message = \Swift_Message::newInstance()
-                ->setSubject("C'est contre nature !")
-                ->setFrom('thomas.jarrand@gmail.com')
-                ->setTo($user->getEmail())
-                ->setBody(
-                    $this->renderView(
-                        'Tom32iSiteBundle:Mail:invitation.html.twig',
-                        array('user' => $user)
-                    )
-                    , 'text/html'
-                )
-            ; 
-
-            $messages[$key] = $mailer->send($message);
+            $messages[$key] = $this->sendInvitation($user, $mailer);
         }
 
         return array(
             'users' => $users,
             'messages' => $messages,
         );
+    }
+
+    /**
+     * @Route("/sudo/user/{id}/inviations", name="user_invitation")
+     * @Template("Tom32iSiteBundle:Default:invitations.html.twig")
+     */
+    public function invitationAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $mailer = $this->get('mailer');
+
+        $user = $em->getRepository('Tom32iUserBundle:User')->find($id);
+
+        if(!$user)
+        {
+            throw $this->createNotFoundException('Unable to find Secret entity.');
+        }
+
+        $message = $this->sendInvitation($user, $mailer);
+
+        return array(
+            'users' => array($user),
+            'messages' => array($message),
+        );
+    }
+
+    private function sendInvitation($user, $mailer)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject("C'est contre nature !")
+            ->setFrom('thomas.jarrand@gmail.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Tom32iSiteBundle:Mail:invitation.html.twig',
+                    array('user' => $user)
+                )
+                , 'text/html'
+            )
+        ; 
+
+        return $mailer->send($message);
     }
 
     /**
