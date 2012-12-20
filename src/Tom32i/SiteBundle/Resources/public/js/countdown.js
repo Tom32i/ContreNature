@@ -86,9 +86,8 @@ $(function()
         document.documentElement.webkitRequestFullScreen();
     });
 
-    //newyear = new Date("January 1, 2013 00:00:00").getTime() / 1000;
-    //newyear = new Date("December 20, 2012 15:55:00").getTime() / 1000;
-    newyear = (new Date().getTime() / 1000) + 30;
+    newyear = new Date("January 1, 2013 00:00:00").getTime() / 1000;
+    //newyear = (new Date().getTime() / 1000) + 10;
 
     seconds = [0, 0];
     minutes = [0, 0];
