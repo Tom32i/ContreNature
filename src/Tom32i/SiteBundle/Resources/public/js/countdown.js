@@ -82,9 +82,7 @@ var interval, newyear, diff, seconds, minutes, s0, s1, m0, m1, y3;
 
 $(function() 
 {
-    $('body').on('click', function() {
-        document.documentElement.webkitRequestFullScreen();
-    });
+    $('body').on('click', goFullScreen);
 
     newyear = new Date("January 1, 2013 00:00:00").getTime() / 1000;
     //newyear = (new Date().getTime() / 1000) + 10;

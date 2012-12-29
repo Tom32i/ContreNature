@@ -1,28 +1,32 @@
 {% extends "Tom32iSiteBundle::layout.html.twig" %}
 
+{% block content_class %}content_wide{% endblock content_class %}
+
 {% block content %}
+	<h2>La grande liste des secrets:</h2>
 
-	{% if open %}
-		<h3>{{ done }} secrets déjà enregistrés !</h3>
+	<div id="secrets" class="">
+		{% for key, secret in secrets %}
 
-		{% set progression = (done / total) * 100 %}
+		{% if key % 6 == 0 %}<div class="slide {{ key == 0 ? 'active' : '' }}">{% endif %}
+		{% if key % 3 == 0 %}<div class="row-fluid">{% endif %}
 
-		<div class="progress progress-{{ progression <= 50 ? 'danger' : ( progression >= 100 ? 'success' : 'warning' )  }} progress-striped active">
-			<div class="bar" style="width: {{ progression }}%"></div>
-		</div>
+			<div class="secret span4">
+				<p>
+					<span class="left">&#8220;</span>
+					<span class="phrase">{{ secret.content }}</span>
+					<span class="right">&#8222;</span>
+				</p>
+			</div>
 
-		<p>Vous avez jusqu'au 30 décembre inclus pour envoyer vos secret.</p>
+		{% if key % 3 == 2 or key == total - 1 %}</div>{% endif %}
+		{% if key % 6 == 5 or key == total - 1 %}</div>{% endif %}
 
-	{% else %}
-		<h2>La grande liste des secrets:</h2>
-
-		<div id="secrets" class="unstyled">
-			{% for secret in secrets %}
-				<div class="secret">
-					<p>{{ secret.content }}</p>
-				</div>
-			{% endfor %}
-		</div>
-	{% endif %}
-
+		{% endfor %}
+	</div>
 {% endblock %}
+
+{% block body_js %}
+	{{ parent() }}
+	<script type="text/javascript"> $(function() { initList(); }); </script>
+{% endblock body_js %}

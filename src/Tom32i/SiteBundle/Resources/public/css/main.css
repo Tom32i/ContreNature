@@ -1,4 +1,4 @@
-body
+body, html
 {
 	background: #ebf1f2;
 	padding: 0;
@@ -60,6 +60,13 @@ body
 	font-size: 20px;
 }
 
+.fullscreen #page-footer
+{
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+}
+
 #page-footer small
 {
 	font-size: 8px;
@@ -76,6 +83,11 @@ body
 	padding: 40px 0;
 	width: 400px;
 	margin: 0 auto;
+}
+
+.content_wide
+{
+	padding: 40px 0;
 }
 
 textarea.input-block-level
@@ -102,4 +114,47 @@ h1, h2, h3, h4, h5, h6
 .exemples li
 {
 	margin: 20px 0;
+}
+
+#secrets{
+	width: 100%;
+	display: block;
+	margin: 80px 0px;
+}
+
+#secrets .slide{
+	opacity: 0;
+	position: absolute;
+
+    transition: opacity 1s;
+    -moz-transition: opacity 1s; /* Firefox 4 */
+    -webkit-transition: opacity 1s; /* Safari and Chrome */
+    -o-transition: opacity 1s; /* Opera */
+}
+#secrets .slide.active{
+	opacity: 1;
+}
+
+.secret{
+	display: block;
+	float: left;
+	width: 25%;
+}
+
+.secret p
+{
+	padding: 40px;
+}
+
+.secret p .phrase
+{
+	font-style: italic;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.secret .left,
+.secret .right {
+	font-size: 42px;
+	color: #999999;
 }

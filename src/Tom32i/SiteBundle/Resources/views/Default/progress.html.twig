@@ -1,0 +1,27 @@
+{% extends "Tom32iSiteBundle::layout.html.twig" %}
+
+{% block content %}
+	{% set complete = done == total %}
+	
+	<h3>
+		{% if complete %}
+			Tous les secrets ont étés enregistrés !
+		{% else %}
+			{{ done }} secrets déjà enregistrés !
+		{% endif %}
+	</h3>
+
+	{% set progression = (done / total) * 100 %}
+
+	<div class="progress progress-{{ progression <= 50 ? 'danger' : ( progression >= 100 ? 'success' : 'warning' )  }} progress-striped active">
+		<div class="bar" style="width: {{ progression }}%"></div>
+	</div>
+
+	<p>
+	{% if complete %}
+		Ils seront révélés le 31 décembre ;)
+	{% else %}
+		Vous avez jusqu'au 30 décembre inclus pour envoyer vos secret.
+	{% endif %}
+	</p>
+{% endblock %}

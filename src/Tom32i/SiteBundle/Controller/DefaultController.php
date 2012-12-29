@@ -33,16 +33,18 @@ class DefaultController extends Controller
                 $done += $secret->isComplete() ? 1 : 0;
             }
 
-            return array(
-                'done' => $done,
-                'total' => count($secrets),
-                'open' => $open,
+            return $this->render(
+                'Tom32iSiteBundle:Default:progress.html.twig',
+                array(
+                    'done' => $done,
+                    'total' => count($secrets),
+                )
             );
         }
 
         return array(
+            'total' => count($secrets),
             'secrets' => $secrets,
-            'open' => $open,
         );
     }
 
