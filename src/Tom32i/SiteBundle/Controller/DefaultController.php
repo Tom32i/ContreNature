@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $open = new DateTime() <= new DateTime('2012-12-31');
+        $open = new DateTime() <= new DateTime('2012-12-31 20:00:00');
 
         $em = $this->getDoctrine()->getManager();
 
@@ -27,10 +27,17 @@ class DefaultController extends Controller
         if($open)
         {
             $done = 0;
+            $incomplete = array();
 
             foreach ($secrets as $secret) 
             {
-                $done += $secret->isComplete() ? 1 : 0;
+                $isComplete = $secret->isComplete();
+                $done += $isComplete ? 1 : 0;
+
+                if(!$isComplete)
+                {
+                    $incomplete[] = $secret->getUser();
+                }
             }
 
             return $this->render(
@@ -38,6 +45,7 @@ class DefaultController extends Controller
                 array(
                     'done' => $done,
                     'total' => count($secrets),
+                    'incomplete' => $incomplete,
                 )
             );
         }
@@ -54,7 +62,7 @@ class DefaultController extends Controller
      */
     public function secretAction(Request $request)
     {
-        $closed = new DateTime() > new DateTime('2012-12-31');
+        $closed = new DateTime() > new DateTime('2012-12-31 20:00:00');
 
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();

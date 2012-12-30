@@ -1,7 +1,5 @@
 function play(target, to)
 {
-    console.log("%o : %s", target, to);
-
     var aa = target.find("li.from");
     var bb = target.find("li.to");
     var from = bb.find('.inn').first().html();
@@ -39,6 +37,8 @@ function refresh()
             play( m0, 0 );
 
             $("body").addClass("new");
+
+            initTwinkle();
         }
         else
         {

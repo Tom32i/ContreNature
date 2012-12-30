@@ -52,11 +52,18 @@ body {
     text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
 }
 
-.background
+.dg.ac
+{
+    display: none;
+}
+
+.background, canvas
 {    
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .background.grey

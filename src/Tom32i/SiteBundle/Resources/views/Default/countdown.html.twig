@@ -32,6 +32,7 @@
         {% block body_container%}
             <div class="background grey"></div>
             <div class="background pink"></div>
+            <canvas id='c'></canvas>
             <div class="container">
 
                 <div class="year">
@@ -141,13 +142,15 @@
         %}
         <script>window.jQuery || document.write('<script src="{{ asset_url }}"><\/script>')</script>
         {% endjavascripts %}
-        
+
+        <script src="http://dat-gui.googlecode.com/git/build/dat.gui.min.js"></script>
 
         {% block body_js %}
         {% javascripts 
             '@Tom32iSiteBundle/Resources/public/js/vendor/prefixfree.min.js'
             '@Tom32iSiteBundle/Resources/public/js/plugins.js'
             '@Tom32iSiteBundle/Resources/public/js/countdown.js' 
+            '@Tom32iSiteBundle/Resources/public/js/twinkle.js'
             output='js/countdown.js' 
             filter='?yui_js'
         %}

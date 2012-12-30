@@ -18,6 +18,15 @@
 	</div>
 
 	<p>
+		On attends encore les secrets de : 
+		{% for key, user in incomplete %}
+			{{ key > 0 ? ', ' : '' }}
+			{{ user }}
+		{% endfor %}
+		.
+	</p>
+
+	<p>
 	{% if complete %}
 		Ils seront révélés le 31 décembre ;)
 	{% else %}
