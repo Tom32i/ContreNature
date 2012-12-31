@@ -17,6 +17,7 @@
 		<div class="bar" style="width: {{ progression }}%"></div>
 	</div>
 
+	{% if not complete %}
 	<p>
 		On attends encore les secrets de : 
 		{% for key, user in incomplete %}
@@ -25,6 +26,7 @@
 		{% endfor %}
 		.
 	</p>
+	{% endif %}
 
 	<p>
 	{% if complete %}
